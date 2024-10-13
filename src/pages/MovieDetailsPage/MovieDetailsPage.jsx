@@ -42,11 +42,25 @@ const MovieDetailsPage = () => {
   }
 
   if (error) {
-    return <div>ERROR</div>;
+    return (
+      <div>
+        <div>
+          <button onClick={() => navigate(backPath.current)}>Go Back</button>
+        </div>
+        <div>Something went wrong, we couldn&apos;t find any details for this film.</div>
+      </div>
+    );
   }
 
   if (!movie) {
-    return null;
+    return (
+      <div>
+        <div>
+          <button onClick={() => navigate(backPath.current)}>Go Back</button>
+        </div>
+        <div>Sorry, we couldn&apos;t find any details for this film.</div>
+      </div>
+    );
   }
 
   return (
