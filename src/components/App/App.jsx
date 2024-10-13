@@ -1,29 +1,31 @@
-import { useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { fetchTrendingMovies } from '../../api/tmdb-api';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviesPage'));
+const MovieDetailsPage = lazy(() => import('../../pages/MovieDetailsPage/MovieDetailsPage'));
+const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
+const MovieCast = lazy(() => import('../../components/MovieCast/MovieCast'));
+const MovieReviews = lazy(() => import('../../components/MovieReviews/MovieReviews'));
 
 function App() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    const fetchTrending = async () => {
-      try {
-        const response = await fetchTrendingMovies();
-        setMovies(response.results);
-      } catch (error) {
-        toast.error(error.message);
-      }
-    };
-
-    fetchTrending();
-  }, []);
-
-  console.log(movies);
   return (
-    <>
+    <div>
       <div>Test App</div>
+      <Suspense fallback={<div>LOADER</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
       <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
-    </>
+    </div>
   );
 }
 
