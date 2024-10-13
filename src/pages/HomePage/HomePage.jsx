@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { fetchTrendingMovies } from '../../api/tmdb-api';
+import MovieList from '../../components/MovieList/MovieList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -10,19 +11,18 @@ const HomePage = () => {
       try {
         const response = await fetchTrendingMovies();
         setMovies(response.results);
-      } catch (error) {
-        toast.error(error.message);
+      } catch (e) {
+        toast.error(e.message);
       }
     };
 
     fetchTrending();
   }, []);
 
-  console.log(movies);
-
   return (
     <>
       <div>HomePage</div>
+      <MovieList movies={movies} />
     </>
   );
 };
