@@ -17,7 +17,7 @@ function App() {
       <header className={css['header']}>
         <Navigation />
       </header>
-      <main className={css['main']}>
+      <main className={css['main-container']}>
         <Suspense fallback={<div>LOADER</div>}>
           <Routes>
             <Route path="/" element={<HomePage />} />

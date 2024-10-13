@@ -27,9 +27,9 @@ const MoviesPage = () => {
         setError(false);
         const response = await fetchMoviesByQuery(filterValue);
         setMovies(response.results);
-      } catch (e) {
+      } catch {
         setError(true);
-        toast.error(e.message);
+        toast.error('It seems there was an error loading the movies. Please try again.');
       } finally {
         setIsLoading(false);
       }

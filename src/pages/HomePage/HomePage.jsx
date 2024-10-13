@@ -15,9 +15,9 @@ const HomePage = () => {
         setError(false);
         const response = await fetchTrendingMovies();
         setMovies(response.results);
-      } catch (e) {
+      } catch {
         setError(true);
-        toast.error(e.message);
+        toast.error('It seems there was an error loading the movies. Please try again.');
       } finally {
         setIsLoading(false);
       }
