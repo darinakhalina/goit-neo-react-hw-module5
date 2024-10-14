@@ -35,3 +35,19 @@ body {
 button:hover {
   cursor: pointer;
 }
+
+.centered-text-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+.link {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #d6056a;
+}

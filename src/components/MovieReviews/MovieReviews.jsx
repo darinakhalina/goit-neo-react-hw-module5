@@ -39,12 +39,18 @@ const MovieReviews = () => {
 
   if (error) {
     return (
-      <div>Something went wrong, we couldn&apos;t find any details for this film reviews.</div>
+      <h3 className="centered-text-block">
+        Something went wrong, we couldn&apos;t find any details for this film reviews.
+      </h3>
     );
   }
 
   if (reviewsList.length === 0) {
-    return <div>There is no reviews information available for this movie.</div>;
+    return (
+      <h3 className="centered-text-block">
+        There is no reviews information available for this movie.
+      </h3>
+    );
   }
 
   return (

@@ -43,7 +43,11 @@ const MoviesPage = () => {
       <Filter />
       {!isLoading && !error && <MovieList movies={movies} />}
       {isLoading && <div>LOADING</div>}
-      {error && !isLoading && <div>ERROR</div>}
+      {error && !isLoading && (
+        <h2 className="centered-text-block">
+          We couldn&apos;t load the movies for you. Please try again.
+        </h2>
+      )}
     </div>
   );
 };

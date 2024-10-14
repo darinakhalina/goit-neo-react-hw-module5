@@ -44,10 +44,12 @@ const MovieDetailsPage = () => {
   if (error) {
     return (
       <div>
-        <div>
-          <button onClick={() => navigate(backPath.current)}>Go Back</button>
-        </div>
-        <div>Something went wrong, we couldn&apos;t find any details for this film.</div>
+        <h2 className="centered-text-block">
+          Something went wrong, we couldn&apos;t find any details for this film.
+          <p>
+            <button onClick={() => navigate(backPath.current)}>Go Back</button>
+          </p>
+        </h2>
       </div>
     );
   }
@@ -55,10 +57,12 @@ const MovieDetailsPage = () => {
   if (!movie) {
     return (
       <div>
-        <div>
-          <button onClick={() => navigate(backPath.current)}>Go Back</button>
-        </div>
-        <div>Sorry, we couldn&apos;t find any details for this film.</div>
+        <h2 className="centered-text-block">
+          Sorry, we couldn&apos;t find any details for this film.
+          <p>
+            <button onClick={() => navigate(backPath.current)}>Go Back</button>
+          </p>
+        </h2>
       </div>
     );
   }

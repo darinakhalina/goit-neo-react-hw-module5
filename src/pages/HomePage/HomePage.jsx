@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { fetchTrendingMovies } from '../../api/tmdb-api';
 import MovieList from '../../components/MovieList/MovieList';
-import { DEFAULT_IMAGE } from '../../constants/imageConstants';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -29,11 +28,14 @@ const HomePage = () => {
 
   return (
     <div>
-      <h2>Trending today</h2>
-      <img src={DEFAULT_IMAGE} width={250} alt="poster" />
+      <h1 className="centered-text-block">Trending today</h1>
       {!isLoading && !error && <MovieList movies={movies} />}
       {isLoading && <h1>LOADER</h1>}
-      {error && !isLoading && <h1>ERROR</h1>}
+      {error && !isLoading && (
+        <h2 className="centered-text-block">
+          We couldn&apos;t load the movies for you. Please try again.
+        </h2>
+      )}
     </div>
   );
 };

@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <p>Sorry, this page doesn&apos;t exist.</p>
+    <h2 className="centered-text-block">
+      Sorry, this page doesn&apos;t exist.
       <p>
-        <Link to="/">Go back to the homepage.</Link>
+        <Link className="link" to="/">
+          Go back to the homepage.
+        </Link>
       </p>
-    </div>
+    </h2>
   );
 };
 

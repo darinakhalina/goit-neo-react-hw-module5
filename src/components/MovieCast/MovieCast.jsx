@@ -38,11 +38,19 @@ const MovieCast = () => {
   }
 
   if (error) {
-    return <div>Something went wrong, we couldn&apos;t find any details for this film cast.</div>;
+    return (
+      <h3 className="centered-text-block">
+        Something went wrong, we couldn&apos;t find any details for this film cast.
+      </h3>
+    );
   }
 
   if (castList.length === 0) {
-    return <div>There is no cast information available for this movie.</div>;
+    return (
+      <h3 className="centered-text-block">
+        There is no cast information available for this movie.
+      </h3>
+    );
   }
 
   return (
