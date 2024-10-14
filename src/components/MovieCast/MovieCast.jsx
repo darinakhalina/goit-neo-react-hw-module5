@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fetchMovieCredits } from '../../api/tmdb-api';
 import Loader from '../Loader/Loader';
+import css from './MovieCast.module.css';
+import { DEFAULT_IMAGE, IMAGE_BASE_URL } from '../../constants/imageConstants';
 
 const MovieCast = () => {
   const { movieId } = useParams();
@@ -56,11 +58,23 @@ const MovieCast = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={css['cast-list']}>
         {castList.map(castMember => (
-          <li key={castMember.id}>
-            <p>{castMember.name}</p>
-            <p>{castMember.character}</p>
+          <li className={css['cast-list-item']} key={castMember.id}>
+            <img
+              width={220}
+              height={350}
+              className={css['cast-list-item-img']}
+              src={
+                castMember.profile_path
+                  ? `${IMAGE_BASE_URL}${castMember.profile_path}`
+                  : DEFAULT_IMAGE
+              }
+            />
+            <div className={css['cast-list-item-info']}>
+              <p className={css['cast-list-item-name']}>{castMember.name}</p>
+              <p className={css['cast-list-item-character']}>{castMember.character}</p>
+            </div>
           </li>
         ))}
       </ul>
