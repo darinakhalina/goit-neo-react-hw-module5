@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fetchMovieReviews } from '../../api/tmdb-api';
 import Loader from '../Loader/Loader';
+import css from './MovieReviews.module.css';
 
 const MovieReviews = () => {
   const { movieId } = useParams();
@@ -55,16 +56,17 @@ const MovieReviews = () => {
   }
 
   return (
-    <div>
-      <ul>
-        {reviewsList.map(review => (
-          <li key={review.id}>
-            <p>{review.author}</p>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={css['reviews-list']}>
+      {reviewsList.map(review => (
+        <li className={css['reviews-list-item']} key={review.id}>
+          <p className={css['reviews-list-item-author']}>
+            <span>Author:</span>
+            <span>{review.author}</span>
+          </p>
+          <p className={css['reviews-list-item-content']}>{review.content}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
 

@@ -73,7 +73,7 @@ const MovieCast = () => {
             />
             <div className={css['cast-list-item-info']}>
               <p className={css['cast-list-item-name']}>{castMember.name}</p>
-              <p className={css['cast-list-item-character']}>{castMember.character}</p>
+              <p className={css['cast-list-item-character']}>Character: {castMember.character}</p>
             </div>
           </li>
         ))}
