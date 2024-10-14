@@ -32,3 +32,8 @@
   background-color: #fceff6;
   color: #d6056a;
 }
+
+.filter-icon {
+  font-weight: bold;
+  margin-right: 4px;
+}

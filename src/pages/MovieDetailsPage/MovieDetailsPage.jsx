@@ -1,8 +1,19 @@
 import { useState, useEffect, useRef, Suspense } from 'react';
-import { useParams, useLocation, useNavigate, Link, Outlet } from 'react-router-dom';
+import { useParams, useLocation, useNavigate, Outlet, NavLink } from 'react-router-dom';
+import clsx from 'clsx';
 import toast from 'react-hot-toast';
+import { GoArrowLeft } from 'react-icons/go';
+import { MdOutlineRecentActors } from 'react-icons/md';
+import { GoCodeReview } from 'react-icons/go';
 import { fetchMovieDetails } from '../../api/tmdb-api';
 import Loader from '../../components/Loader/Loader';
+import css from './MovieDetailsPage.module.css';
+
+const navigationLinkClassNames = ({ isActive }) => {
+  return clsx(css['movie-details-page-nav-link'], {
+    [css['is-active']]: isActive,
+  });
+};
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -45,11 +56,17 @@ const MovieDetailsPage = () => {
   if (error) {
     return (
       <div>
+        <div className={css['movie-details-page-back-bnt-holder']}>
+          <button
+            className={css['movie-details-page-back-bnt']}
+            onClick={() => navigate(backPath.current)}
+          >
+            <GoArrowLeft className={css['movie-details-page-back-bnt-icon']} />
+            Go Back
+          </button>
+        </div>
         <h2 className="centered-text-block">
           Something went wrong, we couldn&apos;t find any details for this film.
-          <p>
-            <button onClick={() => navigate(backPath.current)}>Go Back</button>
-          </p>
         </h2>
       </div>
     );
@@ -58,11 +75,17 @@ const MovieDetailsPage = () => {
   if (!movie) {
     return (
       <div>
+        <div className={css['movie-details-page-back-bnt-holder']}>
+          <button
+            className={css['movie-details-page-back-bnt']}
+            onClick={() => navigate(backPath.current)}
+          >
+            <GoArrowLeft className={css['movie-details-page-back-bnt-icon']} />
+            Go Back
+          </button>
+        </div>
         <h2 className="centered-text-block">
           Sorry, we couldn&apos;t find any details for this film.
-          <p>
-            <button onClick={() => navigate(backPath.current)}>Go Back</button>
-          </p>
         </h2>
       </div>
     );
@@ -70,20 +93,32 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => navigate(backPath.current)}>Go Back</button>
+      <div className={css['movie-details-page-back-bnt-holder']}>
+        <button
+          className={css['movie-details-page-back-bnt']}
+          onClick={() => navigate(backPath.current)}
+        >
+          <GoArrowLeft className={css['movie-details-page-back-bnt-icon']} />
+          Go Back
+        </button>
       </div>
       <div>
         <div>{movie.title}</div>
         <div>{movie.release_date}</div>
         <div>{movie.vote_average}</div>
       </div>
-      <ul>
+      <ul className={css['movie-details-page-nav']}>
         <li>
-          <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+          <NavLink to={`/movies/${movieId}/cast`} className={navigationLinkClassNames}>
+            <MdOutlineRecentActors className={css['movie-details-page-nav-link-icon']} />
+            <span>Cast</span>
+          </NavLink>
         </li>
         <li>
-          <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+          <NavLink to={`/movies/${movieId}/reviews`} className={navigationLinkClassNames}>
+            <GoCodeReview className={css['movie-details-page-nav-link-icon']} />
+            <span>Reviews</span>
+          </NavLink>
         </li>
       </ul>
       <Suspense fallback={<Loader />}>

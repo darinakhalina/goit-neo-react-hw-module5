@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
+import { GoHome } from 'react-icons/go';
+import { RiMovieLine } from 'react-icons/ri';
 import css from './Navigation.module.css';
 
 const navigationLinkClassNames = ({ isActive }) => {
@@ -14,12 +16,14 @@ const Navigation = () => {
       <ul className={css['navigation-list']}>
         <li>
           <NavLink to="/" className={navigationLinkClassNames}>
-            Home
+            <GoHome className={css['navigation-link-icon']} size={20} />
+            <span>Home</span>
           </NavLink>
         </li>
         <li>
           <NavLink to="/movies" className={navigationLinkClassNames}>
-            Movies
+            <RiMovieLine className={css['navigation-link-icon']} size={20} />
+            <span>Movies</span>
           </NavLink>
         </li>
       </ul>

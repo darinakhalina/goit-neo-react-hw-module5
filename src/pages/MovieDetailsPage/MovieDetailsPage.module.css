@@ -1,0 +1,50 @@
+.movie-details-page-nav {
+  display: flex;
+  padding: 16px 0;
+}
+
+.movie-details-page-nav-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.movie-details-page-nav-link:hover:not(.is-active) {
+  background-color: #f0f0f0;
+}
+
+.movie-details-page-nav-link.is-active {
+  color: #d6056a;
+}
+
+.movie-details-page-back-bnt-holder {
+  padding: 16px 0;
+}
+
+.movie-details-page-back-bnt {
+  display: flex;
+  font-size: 18px;
+  color: #000;
+  background-color: #f0f0f0;
+  padding: 8px 16px 8px 8px;
+  border-radius: 8px;
+  border: none;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.movie-details-page-back-bnt:hover {
+  background-color: #fceff6;
+  color: #d6056a;
+}
+
+.movie-details-page-back-bnt-icon,
+.movie-details-page-nav-link-icon {
+  margin-right: 2px;
+}
