@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
+import css from './Filter.module.css';
 
 const Filter = () => {
   const [params, setParams] = useSearchParams();
@@ -16,7 +17,7 @@ const Filter = () => {
 
   return (
     <Formik initialValues={{ filter: initialFilterValue }} onSubmit={handleSubmit}>
-      <Form>
+      <Form className={css['filter']}>
         <Field name="filter" placeholder="Enter the movie title" type="text" autoComplete="off" />
         <button type="submit">Search</button>
       </Form>

@@ -14,7 +14,7 @@
 }
 
 .navigation .navigation-link:hover:not(.is-active) {
-  background-color: #f6f7f8;
+  background-color: #f0f0f0;
 }
 
 .navigation .navigation-link.is-active {
