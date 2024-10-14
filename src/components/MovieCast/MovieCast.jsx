@@ -42,7 +42,7 @@ const MovieCast = () => {
   }
 
   if (castList.length === 0) {
-    <div>There is no cast information available for this movie.</div>;
+    return <div>There is no cast information available for this movie.</div>;
   }
 
   return (
