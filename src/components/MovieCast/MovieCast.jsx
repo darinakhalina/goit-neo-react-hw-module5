@@ -62,8 +62,8 @@ const MovieCast = () => {
         {castList.map(castMember => (
           <li className={css['cast-list-item']} key={castMember.id}>
             <img
-              width={220}
-              height={350}
+              width={170}
+              height={230}
               className={css['cast-list-item-img']}
               src={
                 castMember.profile_path

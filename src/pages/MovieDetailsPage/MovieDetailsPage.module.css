@@ -48,3 +48,50 @@
 .movie-details-page-nav-link-icon {
   margin-right: 2px;
 }
+
+.movie-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.movie-details-img {
+  display: block;
+  max-width: 300px;
+  height: 450px;
+  object-fit: cover;
+}
+
+.movie-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.movie-details-title {
+  display: inline-flex;
+  gap: 4px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.movie-details-subtitle {
+  display: inline-flex;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-details-overview {
+  max-width: 600px;
+}
+
+.movie-details-genre-list {
+  display: flex;
+  gap: 8px;
+}
+
+.movie-details-genre-item {
+  font-weight: bold;
+  color: #d6056a;
+}

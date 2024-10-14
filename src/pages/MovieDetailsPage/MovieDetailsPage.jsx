@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, Suspense } from 'react';
 import { useParams, useLocation, useNavigate, Outlet, NavLink } from 'react-router-dom';
 import clsx from 'clsx';
+import dayjs from 'dayjs';
 import toast from 'react-hot-toast';
 import { GoArrowLeft } from 'react-icons/go';
 import { MdOutlineRecentActors } from 'react-icons/md';
@@ -8,6 +9,7 @@ import { GoCodeReview } from 'react-icons/go';
 import { fetchMovieDetails } from '../../api/tmdb-api';
 import Loader from '../../components/Loader/Loader';
 import css from './MovieDetailsPage.module.css';
+import { DEFAULT_IMAGE, IMAGE_BASE_URL } from '../../constants/imageConstants';
 
 const navigationLinkClassNames = ({ isActive }) => {
   return clsx(css['movie-details-page-nav-link'], {
@@ -102,10 +104,30 @@ const MovieDetailsPage = () => {
           Go Back
         </button>
       </div>
-      <div>
-        <div>{movie.title}</div>
-        <div>{movie.release_date}</div>
-        <div>{movie.vote_average}</div>
+      <div className={css['movie-details']}>
+        <img
+          width={300}
+          height={450}
+          className={css['movie-details-img']}
+          src={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : DEFAULT_IMAGE}
+        />
+        <div className={css['movie-details-info']}>
+          <h1 className={css['movie-details-title']}>
+            <span>{movie.title}</span>
+            <span>({dayjs(movie.release_date).year()})</span>
+          </h1>
+          <p>Vote average: {Math.floor(movie.vote_average * 10)}%</p>
+          <h2 className={css['movie-details-subtitle']}>Overview:</h2>
+          <p className={css['movie-details-overview']}>{movie.overview}</p>
+          <h2 className={css['movie-details-subtitle']}>Genres:</h2>
+          <ul className={css['movie-details-genre-list']}>
+            {movie.genres.map(genre => (
+              <li className={css['movie-details-genre-item']} key={genre.id}>
+                {genre.name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <ul className={css['movie-details-page-nav']}>
         <li>
