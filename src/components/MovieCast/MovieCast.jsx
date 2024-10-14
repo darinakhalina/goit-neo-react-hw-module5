@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fetchMovieCredits } from '../../api/tmdb-api';
+import Loader from '../Loader/Loader';
 
 const MovieCast = () => {
   const { movieId } = useParams();
@@ -34,7 +35,7 @@ const MovieCast = () => {
   }, [movieId]);
 
   if (isLoading) {
-    return <div>LOADING</div>;
+    return <Loader />;
   }
 
   if (error) {

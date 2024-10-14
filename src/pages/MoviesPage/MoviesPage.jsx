@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { fetchMoviesByQuery } from '../../api/tmdb-api';
 import MovieList from '../../components/MovieList/MovieList';
 import Filter from '../../components/Filter/Filter';
+import Loader from '../../components/Loader/Loader';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -42,7 +43,7 @@ const MoviesPage = () => {
     <div>
       <Filter />
       {!isLoading && !error && <MovieList movies={movies} />}
-      {isLoading && <div>LOADING</div>}
+      {isLoading && <Loader />}
       {error && !isLoading && (
         <h2 className="centered-text-block">
           We couldn&apos;t load the movies for you. Please try again.

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, Suspense } from 'react';
 import { useParams, useLocation, useNavigate, Link, Outlet } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fetchMovieDetails } from '../../api/tmdb-api';
+import Loader from '../../components/Loader/Loader';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -38,7 +39,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   if (isLoading) {
-    return <div>LOADING</div>;
+    return <Loader />;
   }
 
   if (error) {
@@ -85,7 +86,7 @@ const MovieDetailsPage = () => {
           <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
         </li>
       </ul>
-      <Suspense fallback={<div>LOADER FOR COMPONENTS</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { fetchTrendingMovies } from '../../api/tmdb-api';
 import MovieList from '../../components/MovieList/MovieList';
+import Loader from '../../components/Loader/Loader';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -30,7 +31,7 @@ const HomePage = () => {
     <div>
       <h1 className="centered-text-block">Trending today</h1>
       {!isLoading && !error && <MovieList movies={movies} />}
-      {isLoading && <h1>LOADER</h1>}
+      {isLoading && <Loader />}
       {error && !isLoading && (
         <h2 className="centered-text-block">
           We couldn&apos;t load the movies for you. Please try again.

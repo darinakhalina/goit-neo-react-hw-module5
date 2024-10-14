@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import css from './App.module.css';
 import Navigation from '../Navigation/Navigation';
+import Loader from '../Loader/Loader';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('../../pages/MoviesPage/MoviesPage'));
@@ -18,7 +19,7 @@ function App() {
         <Navigation />
       </header>
       <main className={css['main-container']}>
-        <Suspense fallback={<div>LOADER</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
